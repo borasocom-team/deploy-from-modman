@@ -87,6 +87,12 @@ function _compute_relative() {
         result="${forward_part:1}"
     fi
 
+    dir_source=$(dirname $source)
+    if [ ! -d "$dir_source" ]; then
+        mkdir -p "$dir_source";
+        #echo "CREATE DIR $dir_source";
+    fi
+
     #echo $result
     ln -sf "$result" "$source"
 }
